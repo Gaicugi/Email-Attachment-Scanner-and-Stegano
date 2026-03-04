@@ -1,0 +1,12 @@
+#encoding
+steg = LSBSteg(cv2.imread("carrier.png"))
+data = open("my_data.bin", "rb").read()
+new_img = steg.encode_binary(data)
+cv2.imwrite("new_image.png", new_img)
+
+#decoding
+steg = LSBSteg(cv2.imread("new_image.png"))
+binary = steg.decode_binary()
+with open("recovered.bin", "rb") as f:
+    f.write(data)
+    
