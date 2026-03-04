@@ -1,0 +1,9 @@
+#encoding
+steg = LSBSteg(cv2.imread("carrier.png")
+new_im = steg.encode_image(cv2.imread("secret_image.jpg"))
+cv2.imwrite("new_image.png", new_im)
+
+#decoding
+steg = LSBSteg("new_image.png")
+orig_im = steg.decode_image()
+cv.SaveImage("recovered.png", orig_im)
